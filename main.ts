@@ -1,4 +1,8 @@
 function numberToString(number: number): string {
+  if (number === 0) {
+    return "zero";
+  }
+
   return number.toString();
 }
 
