@@ -26,9 +26,10 @@ function numberToString(number: number): string {
   if (number === 8) {
     return "eight";
   }
-  if (number === 9) {
-    return "nine";
+  if (number === 9 || number === 10) {
+    return "ten";
   }
+
   return number.toString();
 }
 
