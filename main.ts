@@ -17,6 +17,15 @@ function numberToString(number: number): string {
   if (number === 5) {
     return "five";
   }
+  if (number === 6) {
+    return "six";
+  }
+  if (number === 7) {
+    return "seven";
+  }
+  if (number === 8) {
+    return "eight";
+  }
   return number.toString();
 }
 
