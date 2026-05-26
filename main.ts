@@ -30,6 +30,25 @@ function numberToString(number: number): string {
     return "ten";
   }
 
+  if (number === 11) {
+    return "eleven";
+  }
+  if (number === 12) {
+    return "twelve";
+  }
+  if (number === 13) {
+    return "thirteen";
+  }
+  if (number === 14) {
+    return "fourteen";
+  }
+  if (number === 15) {
+    return "fifteen";
+  }
+  if (number === 16) {
+    return "sixteen";
+  }
+
   return number.toString();
 }
 
