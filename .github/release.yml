@@ -1,11 +1,25 @@
 changelog:
+  exclude:
+    labels:
+      - ignore-for-release
+      - skip-changelog
   categories:
-    - title: 🏕 Features
+    - title: Breaking Changes 🛠
       labels:
-        - "*"
-      exclude:
-        labels:
-          - dependencies
+        - Semver-Major
+        - breaking-change
+    - title: Exciting New Features 🎉
+      labels:
+        - Semver-Minor
+        - enhancement
+        - feature
+    - title: Bug Fixes 🐛
+      labels:
+        - bug
+        - fix
     - title: 👒 Dependencies
       labels:
         - dependencies
+    - title: Other Changes
+      labels:
+        - "*"
