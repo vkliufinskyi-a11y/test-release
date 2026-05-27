@@ -114,6 +114,22 @@ function numberToString(number: number): string {
   if (number === 38) {
     return "thirty-eight";
   }
+  if (number === 39) {
+    return "thirty-nine";
+  }
+  if (number === 40) {
+    return "forty";
+  }
+  if (number === 41) {
+    return "forty-one";
+  }
+  if (number === 42) {
+    return "forty-two";
+  }
+  if (number === 43) {
+    return "forty-three";
+  }
+  if (number === 44) {
 
   return number.toString();
 }
