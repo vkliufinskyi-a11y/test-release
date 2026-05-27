@@ -48,6 +48,15 @@ function numberToString(number: number): string {
   if (number === 16) {
     return "sixteen";
   }
+  if (number === 17) {
+    return "seventeen";
+  }
+  if (number === 18) {
+    return "eighteen";
+  }
+  if (number === 19) {
+    return "nineteen";
+  }
 
   return number.toString();
 }
