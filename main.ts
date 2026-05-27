@@ -60,6 +60,24 @@ function numberToString(number: number): string {
   if (number === 20) {
     return "twenty";
   }
+  if (number === 21) {
+    return "twenty-one";
+  }
+  if (number === 22) {
+    return "twenty-two";
+  }
+  if (number === 23) {
+    return "twenty-three";
+  }
+  if (number === 24) {
+    return "twenty-four";
+  }
+  if (number === 25) {
+    return "twenty-five";
+  }
+  if (number === 26) {
+    return "twenty-six";
+  }
 
   return number.toString();
 }
