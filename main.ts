@@ -96,6 +96,15 @@ function numberToString(number: number): string {
   if (number === 32) {
     return "thirty-two";
   }
+  if (number === 33) {
+    return "thirty-three";
+  }
+  if (number === 34) {
+    return "thirty-four";
+  }
+  if (number === 35) {
+    return "thirty-five";
+  }
 
   return number.toString();
 }
