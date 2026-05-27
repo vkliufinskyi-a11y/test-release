@@ -78,6 +78,15 @@ function numberToString(number: number): string {
   if (number === 26) {
     return "twenty-six";
   }
+  if (number === 27) {
+    return "twenty-seven";
+  }
+  if (number === 28) {
+    return "twenty-eight";
+  }
+  if (number === 29) {
+    return "twenty-nine";
+  }
 
   return number.toString();
 }
