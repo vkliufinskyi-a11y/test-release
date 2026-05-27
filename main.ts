@@ -141,6 +141,14 @@ function numberToString(number: number): string {
   if (number === 47) {
     return "forty-seven";
   }
+  if (number === 48) {
+    return "forty-eight";
+  }
+  if (number === 49) {
+    return "forty-nine";
+  }
+  if (number === 50) {
+    return "fifty";
   return number.toString();
 }
 
