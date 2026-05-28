@@ -213,6 +213,15 @@ function numberToString(number: number): string {
   if (number === 71) {
     return "seventy-one";
   }
+  if (number === 72) {
+    return "seventy-two";
+  }
+  if (number === 73) {
+    return "seventy-three";
+  }
+  if (number === 74) {
+    return "seventy-four";
+  }
 
   return number.toString();
 }
