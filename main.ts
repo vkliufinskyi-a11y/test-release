@@ -150,6 +150,15 @@ function numberToString(number: number): string {
   if (number === 50) {
     return "fifty";
   }
+  if (number === 51) {
+    return "fifty-one";
+  }
+  if (number === 52) {
+    return "fifty-two";
+  }
+  if (number === 53) {
+    return "fifty-three";
+  }
   return number.toString();
 }
 
