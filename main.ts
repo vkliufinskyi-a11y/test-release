@@ -168,6 +168,24 @@ function numberToString(number: number): string {
   if (number === 56) {
     return "fifty-six";
   }
+  if (number === 57) {
+    return "fifty-seven";
+  }
+  if (number === 58) {
+    return "fifty-eight";
+  }
+  if (number === 59) {
+    return "fifty-nine";
+  }
+  if (number === 60) {
+    return "sixty";
+  }
+  if (number === 61) {
+    return "sixty-one";
+  }
+  if (number === 62) {
+    return "sixty-two";
+  }
 
   return number.toString();
 }
