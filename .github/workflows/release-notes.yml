@@ -1,0 +1,77 @@
+name: Release Notes
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-notes-${{ github.repository }}
+  cancel-in-progress: false
+
+jobs:
+  release-notes:
+    name: Generate release notes
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get latest release tag
+        id: prev_tag
+        run: |
+          PREV=$(git tag --sort=-creatordate | grep -E '^v[0-9]' | head -n 1 || true)
+          echo "tag=${PREV}" >> "$GITHUB_OUTPUT"
+          echo "Previous release tag: ${PREV:-none, will use all commits}"
+
+      - name: Generate release tag
+        id: new_tag
+        run: |
+          DATE=$(date -u +%Y%m%d)
+          COUNT=$(git tag --sort=-creatordate | grep -c "^v${DATE}" || true)
+          echo "tag=v${DATE}.${COUNT}" >> "$GITHUB_OUTPUT"
+
+      - name: Collect commits since last release
+        id: commits
+        run: |
+          PREV="${{ steps.prev_tag.outputs.tag }}"
+          if [ -n "$PREV" ]; then
+            RANGE="${PREV}..HEAD"
+          else
+            RANGE="HEAD"
+          fi
+
+          NOTES_FILE=/tmp/release_notes.md
+
+          # Squash-merged and rebase-merged PRs land as plain commits on main.
+          # Create-merge-commit PRs produce a "Merge pull request" commit.
+          # Both are captured by combining --no-merges and --merges passes.
+
+          git log "$RANGE" \
+            --pretty=format:"- %s ([%h](https://github.com/${{ github.repository }}/commit/%H))" \
+            --no-merges > "$NOTES_FILE"
+
+          git log "$RANGE" \
+            --pretty=format:"- %s ([%h](https://github.com/${{ github.repository }}/commit/%H))" \
+            --merges >> "$NOTES_FILE"
+
+          if [ ! -s "$NOTES_FILE" ]; then
+            echo "- No changes since last release" > "$NOTES_FILE"
+          fi
+
+          echo "notes_file=${NOTES_FILE}" >> "$GITHUB_OUTPUT"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.new_tag.outputs.tag }}
+          name: ${{ steps.new_tag.outputs.tag }}
+          body_path: ${{ steps.commits.outputs.notes_file }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          draft: false
+          prerelease: false
