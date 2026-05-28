@@ -186,6 +186,15 @@ function numberToString(number: number): string {
   if (number === 62) {
     return "sixty-two";
   }
+  if (number === 63) {
+    return "sixty-three";
+  }
+  if (number === 64) {
+    return "sixty-four";
+  }
+  if (number === 65) {
+    return "sixty-five";
+  }
 
   return number.toString();
 }
