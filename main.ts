@@ -195,6 +195,15 @@ function numberToString(number: number): string {
   if (number === 65) {
     return "sixty-five";
   }
+  if (number === 66) {
+    return "sixty-six";
+  }
+  if (number === 67) {
+    return "sixty-seven";
+  }
+  if (number === 68) {
+    return "sixty-eight";
+  }
 
   return number.toString();
 }
