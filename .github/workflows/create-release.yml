@@ -12,11 +12,70 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - name: Create release with auto-generated notes
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Build release notes from all merged PRs
+        uses: actions/github-script@v7
+        id: notes
+        with:
+          script: |
+            // Find the previous tag so we know the comparison range
+            const { execSync } = require('child_process');
+            const currentTag = context.ref.replace('refs/tags/', '');
+            let previousTag;
+            try {
+              previousTag = execSync(
+                `git tag --sort=-version:refname | grep -v "^${currentTag}$" | head -1`
+              ).toString().trim();
+            } catch {
+              previousTag = '';
+            }
+
+            // Collect all commits in the range
+            const range = previousTag ? `${previousTag}..${currentTag}` : currentTag;
+            const commits = execSync(`git log ${range} --format=%H`)
+              .toString().trim().split('\n').filter(Boolean);
+
+            // Find every PR whose merge/squash/rebase commit is in the range
+            const prSet = new Map();
+            for (const sha of commits) {
+              const prs = await github.rest.repos.listPullRequestsAssociatedWithCommit({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                commit_sha: sha,
+              });
+              for (const pr of prs.data) {
+                if (pr.state === 'closed' && pr.merged_at && !prSet.has(pr.number)) {
+                  prSet.set(pr.number, pr);
+                }
+              }
+            }
+
+            // Build the markdown body
+            const lines = ['## What\'s Changed', ''];
+            if (prSet.size === 0) {
+              lines.push('_No pull requests found in this range._');
+            } else {
+              for (const pr of [...prSet.values()].sort((a, b) => a.number - b.number)) {
+                lines.push(`- ${pr.title} by @${pr.user.login} in #${pr.number}`);
+              }
+            }
+            lines.push('');
+            if (previousTag) {
+              lines.push(
+                `**Full Changelog**: https://github.com/${context.repo.owner}/${context.repo.repo}/compare/${previousTag}...${currentTag}`
+              );
+            }
+
+            core.setOutput('body', lines.join('\n'));
+
+      - name: Create release
         run: |
           gh release create "${{ github.ref_name }}" \
             --repo "${{ github.repository }}" \
             --title "${{ github.ref_name }}" \
-            --generate-notes
+            --notes "${{ steps.notes.outputs.body }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
