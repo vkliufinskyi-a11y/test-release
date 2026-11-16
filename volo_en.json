@@ -1,9 +1,10 @@
 {
   "name": "tree",
   "value": "bush",
-  "number1": "five",
+  "number1": "one",
   "number2": "two",
   "number3": "three",
+  "tree": "birch",
   "number4": "six",
   "number": "two",
   "month": "March",
@@ -11,5 +12,6 @@
   "bulding": "house",
   "part": "wall",
   "anotherThing": "thing",
-  "anotherMonth": "June"
+  "anotherMonth": "September",
+  "room": "bedroom",  
 }
