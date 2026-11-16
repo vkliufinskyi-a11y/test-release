@@ -1,8 +1,10 @@
 {
   "name": "tree",
   "value": "bush",
+  "number1": "five", 
   "number": "two",
   "month": "March",
   "bulding": "house",
-  "part": "wall"
+  "part": "wall",
+  "anotherMonth": "November",
 }
