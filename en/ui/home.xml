@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<localization>
+	<item name="title.home">Home</item>
+	<item name="title.shop">Shop</item>
+	<item name="meta.description">Your personal dashboard</item>
+	<item name="chapter-19.description"><![CDATA[Chapter 19: <color=orange><b>Cold Start</b></color>]]></item>
+	<item name="chapter-20.description"><![CDATA[Chapter 20: <color=orange><b>Old Alley</b></color>]]></item>
+	<item name="button.play">Play now</item>
+	<item name="button.settings">Settings</item>
+	<item name="footer.copyright">© 2026 Example Games</item>
+</localization>

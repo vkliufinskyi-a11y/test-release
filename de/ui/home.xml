@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<localization>
+	<item name="title.home">Startseite</item>
+	<item name="title.shop">Laden</item>
+	<item name="meta.description">Dein persönliches Dashboard</item>
+	<item name="chapter-19.description"><![CDATA[Kapitel 19: <color=orange><b>Kaltstart</b></color>]]></item>
+	<item name="chapter-20.description"><![CDATA[Kapitel 20: <color=orange><b>Alte Gasse</b></color>]]></item>
+	<item name="button.play">Jetzt spielen</item>
+	<item name="button.settings">Einstellungen</item>
+	<item name="footer.copyright">© 2026 Example Games</item>
+</localization>
