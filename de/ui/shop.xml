@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<localization>
+	<item name="shop.title">Item Shop</item>
+	<item name="shop.buy">Kaufen</item>
+	<item name="shop.sold-out">Ausverkauft</item>
+</localization>
