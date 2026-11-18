@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language>
+	<item name="button.use"><![CDATA[Utiliser]]></item>
+	<item name="button.finish"><![CDATA[Terminer]]></item>
+	<item name="button.confirm"><![CDATA[Confirmer]]></item>
+</language>
