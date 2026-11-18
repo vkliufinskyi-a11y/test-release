@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language>
+	<item name="popup.gems.insufficient.message"><![CDATA[Te estás quedando sin cristales. ¿Qué tal una recarga?]]></item>
+	<item name="button.use"><![CDATA[Usar]]></item>
+	<item name="formatted.largeint.cost"><![CDATA[{amount: largeint(cost)}]]></item>
+	<item name="button.finish"><![CDATA[Finalizar]]></item>
+</language>
