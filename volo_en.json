@@ -14,6 +14,7 @@
   "part": "wall",
   "anotherThing": "thing",
   "anotherMonth": "November",
-  "vehicle": "bike",
-  "one": "one"
+  "vehicle": "plain",
+  "one": "one",
+  "two": "two"
 }
